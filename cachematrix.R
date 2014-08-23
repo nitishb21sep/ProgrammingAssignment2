@@ -1,15 +1,22 @@
+## makeCacheMatrix function creates an object. The object thus created 
+##have 4 functions (get, set, getinverse, setinverse) which are also 
+## called as object methods. The 3 object methods(get, getinverse, 
+## setinverse) will be called by another function named cacheSolve. 
+## cacheSolve takes input as the object created by makeCacheMatrix. 
+## It then checks if the inverse is already calculated by getinverse 
+## function. If it is already there, it simply gets the value 'i' from 
+## getinverse funtion. If not, then it calcuates inverse 
+## and store that new inverse in x setinverse.    
 
-
-makeCacheMatrix <- function(x = matrix()) { ## This function creates a list object
-  i <- NULL       ##i(final answer) is initialized to NULL 
-                  ##as soon as makeCacheMatrix function is called
+makeCacheMatrix <- function(x = matrix()) {
+  i <- NULL       
  
   set <- function(y) { 
     x <<- y
     i <- NULL
   }
-  get  <- function() {x}
-  setinverse <- function(inverse)
+  get  <- function() {x} ## returns the value of original vector
+  setinverse <- function(inverse) 
     { i <<- inverse}
   getinverse <- function()
   {i}
@@ -29,5 +36,5 @@ if(!is.null(i)) {
   x$setinverse(i)
   i
 }
-mat <- matrix(10:18, nrow=3, ncol=3)
+mat <- matrix(1:4, nrow=2, ncol=2) 
 matobject <- makeCacheMatrix(mat)
